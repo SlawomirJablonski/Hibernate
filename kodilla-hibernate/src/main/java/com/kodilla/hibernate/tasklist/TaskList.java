@@ -36,15 +36,4 @@ public class TaskList {
         return description;
     }
 
-    private void setId(int id) {
-        this.id = id;
-    }
-
-    private void setListName(String listName) {
-        this.listName = listName;
-    }
-
-    private void setDescription(String description) {
-        this.description = description;
-    }
 }
