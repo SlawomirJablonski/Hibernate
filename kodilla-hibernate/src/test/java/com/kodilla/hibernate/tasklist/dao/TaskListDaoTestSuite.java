@@ -25,9 +25,13 @@ public class TaskListDaoTestSuite {
 
         //When
         List<TaskList> questList = taskListDao.findByListName(questListName);
+        String nameOfQuestList = questList.get(0).getListName();
+        String descriptionOfQuestList = questList.get(0).getDescription();
 
         //Then
         Assert.assertEquals(1,questList.size());
+        Assert.assertEquals("dreams",nameOfQuestList);
+        Assert.assertEquals("New Year's resolutions",descriptionOfQuestList);
 
         //CleanUp
         int id = questList.get(0).getId();
