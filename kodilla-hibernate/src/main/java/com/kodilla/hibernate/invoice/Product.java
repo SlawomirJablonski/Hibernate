@@ -45,4 +45,12 @@ public class Product {
     public void setItems(List<Item> items) {
         this.items = items;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

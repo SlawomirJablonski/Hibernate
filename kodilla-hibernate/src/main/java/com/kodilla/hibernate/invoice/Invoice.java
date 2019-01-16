@@ -36,9 +36,23 @@ public class Invoice {
             targetEntity = Item.class,
             mappedBy = "invoice",
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            //fetch = FetchType.LAZY
+            fetch = FetchType.EAGER
     )
     public List<Item> getItems() {
         return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    //
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 }

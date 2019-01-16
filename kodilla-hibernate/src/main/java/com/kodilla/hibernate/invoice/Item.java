@@ -62,4 +62,24 @@ public class Item {
     public void setInvoice(Invoice invoice) {
         this.invoice = invoice;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setValue(BigDecimal value) {
+        this.value = value;
+    }
 }
