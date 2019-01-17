@@ -41,18 +41,6 @@ public class TaskList {
         return description;
     }
 
-    private void setId(int id) {
-        this.id = id;
-    }
-
-    private void setListName(String listName) {
-        this.listName = listName;
-    }
-
-    private void setDescription(String description) {
-        this.description = description;
-    }
-
     @OneToMany(
             targetEntity = Task.class,
             mappedBy = "taskList",
@@ -61,6 +49,18 @@ public class TaskList {
     )
     public List<Task> getTasks() {
         return tasks;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setListName(String listName) {
+        this.listName = listName;
     }
 
     public void setTasks(List<Task> tasks) {
