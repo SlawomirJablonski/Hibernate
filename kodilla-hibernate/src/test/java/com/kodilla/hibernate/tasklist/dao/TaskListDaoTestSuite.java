@@ -28,11 +28,13 @@ public class TaskListDaoTestSuite {
 
         //When
         List<TaskList> questList = taskListDao.findByListName(questListName);
-        String nameOfQuestList = questList.get(0).getListName();
-        String descriptionOfQuestList = questList.get(0).getDescription();
-        String descriptionOfQuestList1 = questList.get(1).getDescription();
-        int dreamsId = questList.get(0).getId();
-        int achievementsId = questList.get(1).getId();
+        TaskList firstTaskList = questList.get(0);
+        TaskList secondTaskList = questList.get(1);
+        String nameOfQuestList = firstTaskList.getListName();
+        String descriptionOfQuestList = firstTaskList.getDescription();
+        String descriptionOfQuestList1 = secondTaskList.getDescription();
+        int dreamsId = firstTaskList.getId();
+        int achievementsId = secondTaskList.getId();
 
         //Then
         Assert.assertEquals(2,questList.size());
@@ -44,7 +46,6 @@ public class TaskListDaoTestSuite {
         Assert.assertEquals(questListName.hashCode(), questListName1.hashCode());
 
         //CleanUp
-        //int id = questList.get(0).getId();
         taskListDao.deleteAll();
     }
 }
