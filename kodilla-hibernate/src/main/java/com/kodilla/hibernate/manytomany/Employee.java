@@ -5,9 +5,19 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedQuery(
+/*@NamedQuery(
         name = "Employee.retrieveEmployeeWithLastname",
         query = "FROM Employee WHERE lastname = :LASTNAME"
+)*/
+/*@NamedQuery(
+        name = "Employee.retrieveEmployeeWithPartName",
+        query = "FROM Employee WHERE lastName LIKE CONCAT('%',:ARG,'%')"
+)*/
+@NamedNativeQuery(
+        name = "Employee.retrieveEmployeeWithPartName",
+        query = "SELECT * FROM EMPLOYEES" +
+                " WHERE LASTNAME LIKE CONCAT('%',:ARG,'%')",
+        resultClass = Employee.class
 )
 
 @Entity
