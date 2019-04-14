@@ -5,6 +5,21 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/*@NamedQuery(
+        name = "Employee.retrieveEmployeeWithLastname",
+        query = "FROM Employee WHERE lastname = :LASTNAME"
+)*/
+/*@NamedQuery(
+        name = "Employee.retrieveEmployeeWithPartName",
+        query = "FROM Employee WHERE lastName LIKE CONCAT('%',:ARG,'%')"
+)*/
+@NamedNativeQuery(
+        name = "Employee.retrieveEmployeeWithPartName",
+        query = "SELECT * FROM EMPLOYEES" +
+                " WHERE LASTNAME LIKE CONCAT('%',:ARG,'%')",
+        resultClass = Employee.class
+)
+
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
@@ -51,7 +66,7 @@ public class Employee {
         this.lastname = lastname;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "JOIN_COMPANY_EMPLOYEE",
             joinColumns = {@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID")},
