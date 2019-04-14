@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DataBaseFacade {
@@ -40,10 +41,10 @@ public class DataBaseFacade {
             LOGGER.error("No matching company for searchkey: " + arg);
             throw new SearchingException(SearchingException.ERR_COMPANY_NOT_FOUND);
         } else {
-            LOGGER.info("List of companies");
-            for (int i = 0; i<companies.size();i++){
-                LOGGER.info(1+i+". " + companies.get(i).getName());
-            }
+            LOGGER.info("List of comapnies" + companies.stream()
+                            .map(Company::getName)
+                            .collect(Collectors.joining(",")
+                            ));
         }
         return companies;
     }
@@ -55,10 +56,10 @@ public class DataBaseFacade {
             LOGGER.error("No matching employee for searchkey: " + arg);
             throw new SearchingException(SearchingException.ERR_EMPLOYEE_NOT_FOUND);
         } else {
-            LOGGER.info("List of employes");
-            for (int i = 0; i<employes.size();i++){
-                LOGGER.info(1+i+". " + employes.get(i).getFirstname()+" "+employes.get(i).getLastname());
-            }
+            LOGGER.info("List of employes" + employes.stream()
+                    .map(employee -> String.format("%s %s", employee.getFirstname(), employee.getLastname()))
+                    .collect(Collectors.joining(",")
+                    ));
         }
         return employes;
     }
